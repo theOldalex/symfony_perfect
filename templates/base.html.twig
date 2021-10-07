@@ -24,18 +24,18 @@
                     <a class="nav-link" href="{{ path('cgu') }}">CGU</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Règlement intérieur</a>
+                    <a class="nav-link" href="{{ path('register') }}">Inscription</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Chercher parmis les élèves</a>
+                    <a class="nav-link" href="#">Connexion</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="add" aria-haspopup="true"
                         aria-expanded="false" href="#">Ajouter</a>
 
                     <div class="dropdown-menu" aria-labelledby="add">
-                        <a class="dropdown-item" href="#">Nouvelle matière</a>
-                        <a class="dropdown-item" href="#">Nouvelle classe</a>
+                        <a class="dropdown-item" href=" {{ path('ajout') }}">Nouvel utilisateur</a>
+                        <a class="dropdown-item" href="#">Nouvel article</a>
                         <a class="dropdown-item" href="#">Nouvel élève</a>
                         <a class="dropdown-item" href="#">Nouveau professeur</a>
                     </div>
@@ -45,7 +45,7 @@
                         aria-expanded="false" href="#">Listes</a>
 
                     <div class="dropdown-menu" aria-labelledby="list">
-                        <a class="dropdown-item" href="#">matières</a>
+                        <a class="dropdown-item" href="{{ path('liste_utilisateur') }}">utilisateurs</a>
                         <a class="dropdown-item" href="#">classes</a>
                         <a class="dropdown-item" href="#">élèves</a>
                         <a class="dropdown-item" href="#">professeurs</a>
