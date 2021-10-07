@@ -42,6 +42,12 @@ class Article
      */
     private $pseudo;
 
+    /**
+     * @ORM\OneToOne(targetEntity=Commentaire::class, inversedBy="article", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $commentaire;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -108,6 +114,18 @@ class Article
         }
 
         $this->pseudo = $pseudo;
+
+        return $this;
+    }
+
+    public function getCommentaire(): ?Commentaire
+    {
+        return $this->commentaire;
+    }
+
+    public function setCommentaire(Commentaire $commentaire): self
+    {
+        $this->commentaire = $commentaire;
 
         return $this;
     }

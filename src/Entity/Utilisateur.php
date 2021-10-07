@@ -33,6 +33,12 @@ class Utilisateur
      */
     private $roles;
 
+    /**
+     * @ORM\OneToOne(targetEntity=Commentaire::class, inversedBy="utilisateur", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $commentaire;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -70,6 +76,18 @@ class Utilisateur
     public function setRoles(string $roles): self
     {
         $this->roles = $roles;
+
+        return $this;
+    }
+
+    public function getCommentaire(): ?Commentaire
+    {
+        return $this->commentaire;
+    }
+
+    public function setCommentaire(Commentaire $commentaire): self
+    {
+        $this->commentaire = $commentaire;
 
         return $this;
     }

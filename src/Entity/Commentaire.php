@@ -27,6 +27,16 @@ class Commentaire
      */
     private $datePublication;
 
+    /**
+     * @ORM\OneToOne(targetEntity=Utilisateur::class, mappedBy="commentaire", cascade={"persist", "remove"})
+     */
+    private $utilisateur;
+
+    /**
+     * @ORM\OneToOne(targetEntity=Article::class, mappedBy="commentaire", cascade={"persist", "remove"})
+     */
+    private $article;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -52,6 +62,40 @@ class Commentaire
     public function setDatePublication(\DateTimeInterface $datePublication): self
     {
         $this->datePublication = $datePublication;
+
+        return $this;
+    }
+
+    public function getUtilisateur(): ?Utilisateur
+    {
+        return $this->utilisateur;
+    }
+
+    public function setUtilisateur(Utilisateur $utilisateur): self
+    {
+        // set the owning side of the relation if necessary
+        if ($utilisateur->getCommentaire() !== $this) {
+            $utilisateur->setCommentaire($this);
+        }
+
+        $this->utilisateur = $utilisateur;
+
+        return $this;
+    }
+
+    public function getArticle(): ?Article
+    {
+        return $this->article;
+    }
+
+    public function setArticle(Article $article): self
+    {
+        // set the owning side of the relation if necessary
+        if ($article->getCommentaire() !== $this) {
+            $article->setCommentaire($this);
+        }
+
+        $this->article = $article;
 
         return $this;
     }
